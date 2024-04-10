@@ -10,7 +10,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
     "plugin:import/recommended",
-    "plugin:jsx-a11y/recommended",
+    // "plugin:jsx-a11y/recommended",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",
@@ -21,7 +21,14 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "react-hooks", "import", "jsx-a11y", "prettier"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "react-hooks",
+    "import",
+    // "jsx-a11y",
+    "prettier"
+  ],
   "settings": {
     "react": {
       "version": "detect"
@@ -29,10 +36,20 @@
   },
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "import/no-unresolved": "off"
+    "import/no-unresolved": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "react/prop-types": "off",
+    "react/no-unknown-property": "off",
+    "react/display-name": "off"
   },
   "globals": {
     "chrome": "readonly"
   },
-  "ignorePatterns": ["watch.js", "dist/**"]
+  "ignorePatterns": [
+    "watch.js",
+    "dist/**",
+    "*.config.js"
+  ]
 }

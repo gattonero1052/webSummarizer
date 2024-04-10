@@ -3,6 +3,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path, { resolve } from 'path';
 import { getCacheInvalidationKey, getPlugins } from './utils/vite';
+import replace from '@rollup/plugin-replace';
 
 const rootDir = resolve(__dirname);
 const srcDir = resolve(rootDir, 'src');
@@ -20,7 +21,15 @@ export default defineConfig({
       '@pages': pagesDir,
     },
   },
-  plugins: [...getPlugins(isDev), react()],
+  plugins: [
+    // needed for tailwindcss to work under shadow root, wondering why ':root':':host' doesn't work
+    replace({
+      include: ['src/**/*.css'],
+      root: 'host',
+    }),
+    ...getPlugins(isDev),
+    react(),
+  ],
   publicDir: resolve(rootDir, 'public'),
   build: {
     outDir: resolve(rootDir, 'dist'),
@@ -37,7 +46,7 @@ export default defineConfig({
         contentInjected: resolve(pagesDir, 'content', 'injected', 'index.ts'),
         contentUI: resolve(pagesDir, 'content', 'ui', 'index.ts'),
         background: resolve(pagesDir, 'background', 'index.ts'),
-        contentStyle: resolve(pagesDir, 'content', 'style.scss'),
+        contentStyle: resolve(pagesDir, 'shared', 'style_out.css'),
         popup: resolve(pagesDir, 'popup', 'index.html'),
         newtab: resolve(pagesDir, 'newtab', 'index.html'),
         options: resolve(pagesDir, 'options', 'index.html'),

@@ -1,0 +1,143 @@
+.menu-wrapper {
+  // strange bug, must set a default z-index
+  &,
+  & * {
+    z-index: 0;
+  }
+
+  &,
+  div {
+    box-sizing: border-box;
+  }
+  font-family:
+    LTInstitute,
+    sans-serif,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-color: var(--stroke);
+  border-width: 2px;
+  border-radius: 20px;
+  position: fixed;
+  overflow: hidden;
+  max-height: 80vh;
+  min-width: 200px;
+  max-width: 30vw;
+  right: 20px;
+  top: 20px;
+  background: var(--bg);
+
+  .menu-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg);
+  }
+
+  .menu-bg-wrapper {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+  }
+
+  .menu-option-rows {
+    overflow: hidden;
+    height: 0;
+  }
+
+  .menu-rows {
+    & > div {
+      padding: 0.5rem 1rem;
+    }
+    &.menu-row-summary {
+      justify-content: flex-start;
+      flex-grow: 1;
+    }
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .menu-animation-item {
+      overflow: hidden;
+      box-sizing: border-box;
+      .toggle-option-button {
+        padding-top: 2px;
+
+        svg {
+          fill: var(--primary);
+        }
+        &:hover svg {
+          fill: var(--bg);
+        }
+      }
+    }
+
+    .menu-buttons {
+      display: flex;
+      width: 100%;
+      justify-content: flex-end;
+      align-items: center;
+
+      .menu-buttons-item {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    .menu-operation {
+      color: var(--content-text-color);
+      &:not(:last-child){
+        border-bottom: 1px solid rgba(0,0,0,.1);
+      }
+      .menu-operation-label {
+        white-space: nowrap;
+        text-overflow: clip;
+        margin-right: 1rem;
+        font-size: 1rem;
+      }
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      select {
+        background: transparent;
+        option {
+          background: var(--bg);
+        }
+      }
+    }
+  }
+}
+
+.menu-summary-wrapper {
+  z-index: auto;
+  padding-bottom: 1rem;
+  height: auto;
+  width: 100%;
+  .menu-summary {
+    height: auto;
+    min-height: 100px;
+    padding: 0.5rem;
+    white-space: normal;
+    border: 1px solid var(--content-text);
+    background-color: #fffffe;
+    color: var(--content-text-color);
+    border-radius: 15px;
+    width: 100%;
+  }
+}

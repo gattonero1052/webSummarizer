@@ -1,0 +1,44 @@
+// IFTTT utils Colors, tailwindcss.config.js
+*,
+::backdrop,
+:after,
+:before {
+  --bg: #eff0f3;
+  --stroke: #0d0d0d;
+  --primary: #ff8e3c;
+  --primary-text: #0d0d0d;
+  --secondary: #d9376e;
+  --secondary-text: #0d0d0d;
+  --tertiary: #fffffe;
+  --icon: #2a2a2a;
+  --title-text: #0d0d0d;
+  --content-text: #2a2a2a;
+}
+
+.bg-color {
+  background: var(--bg);
+}
+
+.primary-color {
+  background: var(--primary);
+}
+
+.primary-text-color {
+  color: var(--primary-text);
+}
+
+.secondary-color {
+  background: var(--secondary);
+}
+
+.secondary-text-color {
+  color: var(--secondary-text);
+}
+
+.tertiary-color {
+  background: var(--tertiary);
+}
+
+.icon-color {
+  color: #2a2a2a;
+}

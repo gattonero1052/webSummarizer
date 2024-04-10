@@ -1,0 +1,98 @@
+@mixin iconShift(){
+  transform: translateY(-2.5px);
+}
+
+.sidebar-wrapper {
+  height: 100%;
+  position: fixed;
+  width: 13rem;
+  overflow: hidden;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  border-right: 1px solid black;
+  flex-direction: column;
+  display: flex;
+  margin-left: 0;
+  padding: 0.5rem 0;
+  color: var(---primary-text);
+
+  .header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    line-height: 3rem;
+    color: var(---content-text);
+    svg {
+      @include iconShift();
+      cursor: pointer;
+    }
+  }
+
+  .body {
+    .item-wrapper {
+      height: 5rem;
+      width: 100%;
+      padding: 0 2rem;
+      font-size: 14px;
+      font-weight: normal;
+      transition:
+        background-color 0.5s ease,
+        color 0.5s ease;
+      background-color: var(--bg);
+      &:hover,&.selected {
+        background-color: #333;
+        color: var(--bg);
+        .item {
+          border-bottom-color: #333;
+          svg {
+            fill: var(--primary);
+            path {
+              stroke: var(--primary);
+            }
+            &.settings {
+              path:nth-child(1) {
+                stroke: var(--primary);
+              }
+              path:nth-child(2) {
+                stroke: var(--bg);
+              }
+            }
+          }
+        }
+      }
+
+      // a bit difference for hovered menu item
+      &:hover {
+        opacity:.85;
+      }
+
+      .item {
+        cursor: pointer;
+        padding: 2rem 0;
+        width: 100%;
+        transition: border-bottom-color 0.3s linear;
+        border-bottom: 1px solid #ddd;
+      }
+
+      svg {
+        @include iconShift();
+        transition: fill 0.5s ease;
+        fill: var(--icon);
+        path {
+          stroke: var(--stroke);
+          transition: stroke 0.5s ease;
+        }
+        &.settings {
+          path:nth-child(1) {
+            stroke: var(--stroke);
+          }
+          path:nth-child(2) {
+            stroke: var(--bg);
+          }
+        }
+      }
+    }
+  }
+}

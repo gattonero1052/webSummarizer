@@ -17,8 +17,15 @@ export const getPlugins = (isDev: boolean): PluginOption[] => [
 
 const cacheInvalidationKeyRef = { current: generateKey() };
 
+// content_script injected style is could cause CSS version skew in injected UI and page UI
+
+// here content_script injected style is meant to be applied to the whole extension
+// we remove the key (can't get it when we inject the style dynamically in content script)
+// and EACH TIME WE DO MAJOR CHANGE TO THE STYLE, WE CHANGE THE KEY HERE AND also in root.tsx
+// to invalidate the cache
 export function getCacheInvalidationKey() {
-  return cacheInvalidationKeyRef.current;
+  return '';
+  // return cacheInvalidationKeyRef.current;
 }
 
 function regenerateCacheInvalidationKey() {
